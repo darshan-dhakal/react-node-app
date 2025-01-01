@@ -13,10 +13,17 @@ mongoose.connect(MONGOOSEDB_URL).then(() => console.log("db connected")).then((e
 })
 
 
-
 const databaseSeeder = require('./databaseSeeder')
+const userRoute = require('./routes/user')
+
+app.use(express.json())
 //database seeder routes
 app.use('/api/seed', databaseSeeder)
+
+//routes for user
+app.use('/api/users', userRoute)
+
+
 
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
@@ -44,3 +51,12 @@ app.listen(PORT, () => {
 //   const product = products.find((product) => product.id === req.params.id)
 //   res.json(product);
 // });
+
+// echo "# react-node-app" >> README.md
+// git init
+// git add README.md
+// git commit - m "first commit"
+// git branch - M main
+// git remote add origin https://github.com/darshan-dhakal/react-node-app.git
+// git push - u origin main
+
